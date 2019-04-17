@@ -8,41 +8,74 @@ namespace ConsoleApp5
 {
     class Program
     {
-         static void Main(string[] args)
-            {
-                LinkedList a = new LinkedList();
-            }
+         {
+        static void Main(string[] args)
+        {
+            linkedlist a = new linkedlist();
+            a.run();
+            a.walkoverthelist();
+        }
+    }
 
+    class dog
+    {
+        public static int numberofdogs = 0;
+        public dog()
+        {
+            dog.numberofdogs++;
+        }
+        public string dogname;
+        public string dogbreed;
+        public dog nextdog;
+    }
+
+    class linkedlist
+    {
+        public dog current;
+        public dog head;
+        public dog peanut = new dog();
+        public dog fifi = new dog();
+        public dog jordan = new dog();
+        public dog fido = new dog();
+        public dog roy = new dog();
+        public dog coco = new dog();
+
+        public void run()
+        {
+            head = peanut;
+            peanut.dogname = "peanut";
+            peanut.dogbreed = "bichon";
+            peanut.nextdog = fifi;
+
+            fifi.dogname = "fifi";
+            fifi.dogbreed = "poodle";
+            fifi.nextdog = jordan;
+
+            jordan.dogname = "jordan";
+            jordan.dogbreed = "german sheppard";
+            jordan.nextdog = fido;
+
+            fido.dogname = "fido";
+            fido.dogbreed = "beagle";
+            fido.nextdog = roy;
+
+            roy.dogname = "Roy";
+            roy.dogbreed = "Spaniel";
+            roy.nextdog = coco;
+
+            coco.dogname = "Coco";
+            coco.dogbreed = "beagle";
+            coco.nextdog = null;
         }
 
-        class Dog
+        public void walkoverthelist()
         {
-            public static int NumberofDogs = 0;
-            public Dog()
+            current = head;
+            while (current != null)
             {
-
-            }
-            String DogName;
-            String DogBreed;
-
-        }
-        class LinkedList
-        {
-            public Dog Head;
-            Dog Peanut = new Dog();
-            public void run()
-            {
-                Head = Peanut;
-                Peanut.DogName = "Yoo";
-            }
-        }
-
-        public void WalkOverTheList()
-        {
-            Current = Head;
-            while (Current != null)
-            {
-                Console.WriteLine(Current.DogName);
+                Console.WriteLine(current.dogname);
+                current = current.nextdog;
             }
         }
     }
+}
